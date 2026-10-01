@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spotify Clone - Administrativo</title>
+
+    <link rel="stylesheet" href="./css/admin.css">
+</head>
+
+<body>
+
+    <header>
+        <h1>Spotify Clone</h1>
+        <h2>Painel Administrativo</h2>
+    </header>
+
+    <main>
+
+        <section class="formulario">
+
+            <h2>Cadastro de música</h2>
+
+            <form id="form-musica">
+
+                <!-- ID usado quando estamos editando -->
+                <input type="hidden" id="musica-id">
+
+                <label for="titulo">Título</label>
+                <input type="text" id="titulo" required>
+
+                <label for="artista">Artista</label>
+                <input type="text" id="artista" required>
+
+                <label for="album">Álbum</label>
+                <input type="text" id="album" required>
+
+                <label for="duracao">Duração (segundos)</label>
+                <input type="number" id="duracao" min="1" required>
+
+                <label for="genero">Gênero</label>
+                <input type="text" id="genero">
+
+                <label for="audio-url">URL do áudio</label>
+                <input type="url" id="audio-url">
+
+                <label for="cover-url">URL da capa</label>
+                <input type="url" id="cover-url">
+
+                <div class="botoes-form">
+
+                    <button type="submit" id="btn-salvar">
+                        Adicionar música
+                    </button>
+
+                    <button type="button" id="btn-cancelar">
+                        Cancelar
+                    </button>
+
+                </div>
+
+            </form>
+
+        </section>
+
+
+        <section class="lista-musicas">
+
+            <h2>Músicas cadastradas</h2>
+
+            <table>
+
+                <thead>
+                    <tr>
+                        <th>Título</th>
+                        <th>Artista</th>
+                        <th>Álbum</th>
+                        <th>Duração</th>
+                        <th>Gênero</th>
+                        <th>Ações</th>
+                    </tr>
+                </thead>
+
+                <tbody id="lista-musicas">
+                    <!-- As músicas serão inseridas pelo JavaScript -->
+                </tbody>
+
+            </table>
+
+        </section>
+
+    </main>
+
+    <script type="module" src="./js/admin.js"></script>
+
+</body>
+
+</html>
