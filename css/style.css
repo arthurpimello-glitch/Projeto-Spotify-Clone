@@ -1,0 +1,182 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: Arial, sans-serif;
+    background: #121212;
+    color: white;
+    padding-bottom: 100px;
+}
+
+
+/* ========================================
+   TOPO
+======================================== */
+
+.topo {
+    height: 70px;
+    padding: 0 30px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    background: #181818;
+}
+
+.logo {
+    font-size: 24px;
+    font-weight: bold;
+}
+
+.link-admin {
+    color: white;
+    text-decoration: none;
+}
+
+
+/* ========================================
+   CONTEÚDO
+======================================== */
+
+main {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 40px 20px;
+}
+
+.cabecalho h1 {
+    margin-bottom: 5px;
+}
+
+.cabecalho p {
+    color: #b3b3b3;
+}
+
+
+/* ========================================
+   PESQUISA
+======================================== */
+
+.pesquisa {
+    margin: 30px 0;
+}
+
+.pesquisa input {
+    width: 100%;
+    padding: 15px;
+
+    border: none;
+    border-radius: 8px;
+
+    font-size: 16px;
+}
+
+
+/* ========================================
+   LISTA
+======================================== */
+
+.titulo-section {
+    margin-bottom: 20px;
+}
+
+.lista-musicas {
+    display: grid;
+
+    grid-template-columns:
+        repeat(auto-fill, minmax(250px, 1fr));
+
+    gap: 20px;
+}
+
+
+/* ========================================
+   CARD
+======================================== */
+
+.card-musica {
+    background: #181818;
+
+    padding: 16px;
+
+    border-radius: 10px;
+
+    transition: transform 0.2s;
+}
+
+.card-musica:hover {
+    transform: translateY(-4px);
+}
+
+
+.capa-musica {
+    width: 100%;
+    aspect-ratio: 1;
+
+    object-fit: cover;
+
+    border-radius: 8px;
+
+    margin-bottom: 12px;
+}
+
+
+.informacoes-musica h3 {
+    margin: 0 0 8px;
+}
+
+.informacoes-musica p {
+    margin: 4px 0;
+    color: #b3b3b3;
+}
+
+
+.card-musica button {
+    width: 100%;
+
+    margin-top: 15px;
+
+    padding: 10px;
+
+    border: none;
+    border-radius: 20px;
+
+    cursor: pointer;
+}
+
+
+/* ========================================
+   PLAYER
+======================================== */
+
+.player {
+    position: fixed;
+
+    left: 0;
+    right: 0;
+    bottom: 0;
+
+    height: 90px;
+
+    background: #181818;
+
+    display: flex;
+    align-items: center;
+
+    gap: 30px;
+
+    padding: 15px 30px;
+
+    border-top: 1px solid #333;
+}
+
+.musica-atual {
+    min-width: 250px;
+}
+
+#audio-player {
+    flex: 1;
+}

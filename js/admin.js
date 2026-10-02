@@ -7,8 +7,19 @@ import {
     doc
 } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
-import { db } from "./firebaseConfig.js";
+import {
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
+import { auth , db } from "./firebaseConfig.js";
+
+// UID DA CONTA ADMIN
+const ADMIN_UID = "8wDYmklQzHf3zTU6m9vHXCvrast2";
+
+// ========================================
+// ELEMENTOS DO HTML
+// ========================================
 const formulario = document.getElementById("form-musica");
 
 const musicaId = document.getElementById("musica-id");
@@ -26,13 +37,15 @@ const listaMusicas = document.getElementById("lista-musicas");
 const btnSalvar = document.getElementById("btn-salvar");
 const btnCancelar = document.getElementById("btn-cancelar");
 
-const musicasRef = collection(db, "songs");
+const btnLogout = document.getElementById("btn-logout");
 
-// função que vai ser responsável por carregar
-// as músicas na tela
+// pegar a referência da coleção "songs" do firebase
+const musicasRef = collection(db, "songs");
 
 // ========================================
 // READ
+// função que vai ser responsável por carregar
+// as músicas na tela
 // ========================================
 async function carregarMusicas() {
 
@@ -230,7 +243,50 @@ btnCancelar.addEventListener("click", () => {
 });
 
 // ========================================
+// btn logout
+// ========================================
+
+btnLogout.addEventListener("click", async () => {
+
+    try {
+
+        await signOut(auth);
+
+        window.location.href = "./index.html";
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao sair:",
+            erro
+        );
+
+    }
+
+});
+
+// ========================================
 // INICIALIZAÇÃO
 // ========================================
 
-carregarMusicas();
+onAuthStateChanged(auth, (user) => {
+
+    if (!user) {
+
+        window.location.href = "./index.html";
+
+        return;
+    }
+
+
+    if (user.uid !== ADMIN_UID) {
+
+        window.location.href = "./user.html";
+
+        return;
+    }
+
+
+    carregarMusicas();
+
+});

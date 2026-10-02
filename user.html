@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Spotify Clone</title>
+
+    <link rel="stylesheet" href="./css/style.css">
+</head>
+
+<body>
+
+    <header class="topo">
+
+    <div class="logo">
+        Spotify Clone
+    </div>
+
+    <div>
+
+        <button id="btn-logout">
+            Sair
+        </button>
+
+    </div>
+
+</header>
+
+
+    <main>
+
+        <section class="cabecalho">
+
+            <h1>Olá!</h1>
+
+            <p>Encontre uma música para ouvir.</p>
+
+        </section>
+
+
+        <section class="pesquisa">
+
+            <input
+                type="text"
+                id="campo-pesquisa"
+                placeholder="Pesquisar música, artista ou álbum..."
+            >
+
+        </section>
+
+
+        <section class="musicas-section">
+
+            <div class="titulo-section">
+                <h2>Músicas</h2>
+            </div>
+
+            <div id="lista-musicas" class="lista-musicas">
+                <!-- Os cards serão criados pelo JavaScript -->
+            </div>
+
+        </section>
+
+    </main>
+
+
+    <footer class="player">
+
+        <div class="musica-atual">
+
+            <span id="musica-atual-titulo">
+                Nenhuma música selecionada
+            </span>
+
+        </div>
+
+
+        <audio id="audio-player" controls>
+        </audio>
+
+    </footer>
+
+
+    <script type="module" src="./js/app.js"></script>
+
+</body>
+
+</html>

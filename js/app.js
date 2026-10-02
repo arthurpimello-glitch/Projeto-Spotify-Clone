@@ -1,6 +1,11 @@
 import { collection, getDocs } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
 
-import { db } from "./firebaseConfig.js";
+import {
+    onAuthStateChanged,
+    signOut
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
+
+import { auth , db } from "./firebaseConfig.js";
 
 
 // ========================================
@@ -15,6 +20,7 @@ const audioPlayer = document.getElementById("audio-player");
 
 const musicaAtualTitulo = document.getElementById("musica-atual-titulo");
 
+const btnLogout = document.getElementById("btn-logout");
 
 // ========================================
 // VARIÁVEIS
@@ -230,9 +236,43 @@ campoPesquisa.addEventListener("input", () => {
 
 });
 
+// ========================================
+// btn logout
+// ========================================
+
+btnLogout.addEventListener("click", async () => {
+
+    try {
+
+        await signOut(auth);
+
+        window.location.href = "./index.html";
+
+    } catch (erro) {
+
+        console.error(
+            "Erro ao sair:",
+            erro
+        );
+
+    }
+
+});
 
 // ========================================
 // INICIALIZAÇÃO
 // ========================================
 
-carregarMusicas();
+onAuthStateChanged(auth, (user) => {
+
+    if (!user) {
+
+        window.location.href = "./index.html";
+
+        return;
+    }
+
+
+    carregarMusicas();
+
+});
