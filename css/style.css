@@ -1,13 +1,56 @@
+/* ========================================
+   VARIÁVEIS
+======================================== */
+
+:root {
+    --preto: #050505;
+    --preto-2: #0b0b0b;
+    --painel: #111111;
+    --painel-2: #171717;
+
+    --laranja: #ff7a00;
+    --laranja-claro: #ff9d2e;
+    --laranja-escuro: #c94f00;
+
+    --texto: #f5f5f5;
+    --texto-secundario: #a6a6a6;
+
+    --borda: rgba(255, 122, 0, 0.14);
+}
+
+
+/* ========================================
+   RESET
+======================================== */
+
 * {
     box-sizing: border-box;
 }
 
+
 body {
     margin: 0;
+
+    min-height: 100vh;
+
     font-family: Arial, sans-serif;
-    background: #121212;
-    color: white;
-    padding-bottom: 100px;
+
+    background:
+        radial-gradient(
+            circle at top left,
+            rgba(255, 100, 0, 0.08),
+            transparent 25%
+        ),
+        linear-gradient(
+            180deg,
+            #040404,
+            #090909 45%,
+            #050505
+        );
+
+    color: var(--texto);
+
+    padding-bottom: 105px;
 }
 
 
@@ -16,24 +59,109 @@ body {
 ======================================== */
 
 .topo {
-    height: 70px;
+    position: sticky;
+
+    top: 0;
+
+    z-index: 20;
+
+    height: 72px;
+
     padding: 0 30px;
 
     display: flex;
+
     align-items: center;
+
     justify-content: space-between;
 
-    background: #181818;
+    background:
+        rgba(5, 5, 5, 0.92);
+
+    backdrop-filter: blur(14px);
+
+    border-bottom: 1px solid #1a1a1a;
 }
+
 
 .logo {
-    font-size: 24px;
-    font-weight: bold;
+    font-size: 25px;
+
+    font-weight: 800;
+
+    background: linear-gradient(
+        90deg,
+        var(--laranja-escuro),
+        var(--laranja-claro)
+    );
+
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
 
+
+.topo > div:last-child {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
 .link-admin {
-    color: white;
+    padding: 9px 14px;
+
+    border: 1px solid #333;
+
+    border-radius: 7px;
+
+    color: #ddd;
+
     text-decoration: none;
+
+    transition: 0.2s;
+}
+
+
+.link-admin:hover {
+    border-color: var(--laranja);
+
+    color: var(--laranja-claro);
+}
+
+
+/* ========================================
+   BOTÕES
+======================================== */
+
+button {
+    border: none;
+
+    border-radius: 7px;
+
+    padding: 9px 14px;
+
+    cursor: pointer;
+
+    font-weight: 700;
+
+    transition:
+        transform 0.15s,
+        filter 0.2s,
+        background 0.2s;
+}
+
+
+button:hover {
+    filter: brightness(1.08);
+
+    transform: translateY(-1px);
+}
+
+
+button:active {
+    transform: translateY(1px);
 }
 
 
@@ -42,17 +170,36 @@ body {
 ======================================== */
 
 main {
-    max-width: 1200px;
+    max-width: 1250px;
+
     margin: 0 auto;
-    padding: 40px 20px;
+
+    padding: 40px 24px;
 }
+
+
+/* ========================================
+   CABEÇALHO
+======================================== */
+
+.cabecalho {
+    padding: 10px 0 30px;
+}
+
 
 .cabecalho h1 {
-    margin-bottom: 5px;
+    margin: 0;
+
+    font-size: 40px;
 }
 
+
 .cabecalho p {
-    color: #b3b3b3;
+    margin-top: 10px;
+
+    color: var(--texto-secundario);
+
+    font-size: 16px;
 }
 
 
@@ -61,33 +208,196 @@ main {
 ======================================== */
 
 .pesquisa {
-    margin: 30px 0;
+    margin-bottom: 40px;
 }
+
 
 .pesquisa input {
     width: 100%;
-    padding: 15px;
 
-    border: none;
-    border-radius: 8px;
+    padding: 16px 18px;
+
+    border: 1px solid #272727;
+
+    border-radius: 10px;
+
+    background: #101010;
+
+    color: white;
 
     font-size: 16px;
+
+    outline: none;
+
+    transition:
+        border-color 0.2s,
+        box-shadow 0.2s;
+}
+
+
+.pesquisa input::placeholder {
+    color: #666;
+}
+
+
+.pesquisa input:focus {
+    border-color: var(--laranja);
+
+    box-shadow:
+        0 0 0 3px rgba(255, 122, 0, 0.08),
+        0 0 24px rgba(255, 122, 0, 0.06);
 }
 
 
 /* ========================================
-   LISTA
+   TÍTULOS DE SEÇÃO
 ======================================== */
 
 .titulo-section {
-    margin-bottom: 20px;
+    margin-bottom: 18px;
 }
+
+
+.titulo-section h2 {
+    margin: 0;
+
+    font-size: 24px;
+}
+
+
+/* ========================================
+   PLAYLISTS
+======================================== */
+
+.playlists-section {
+    margin-bottom: 45px;
+
+    padding: 24px;
+
+    border: 1px solid var(--borda);
+
+    border-radius: 14px;
+
+    background:
+        linear-gradient(
+            145deg,
+            rgba(19, 19, 19, 0.96),
+            rgba(8, 8, 8, 0.96)
+        );
+}
+
+
+#form-playlist {
+    display: flex;
+
+    gap: 10px;
+
+    margin-bottom: 22px;
+}
+
+
+#form-playlist input {
+    flex: 1;
+
+    padding: 12px 14px;
+
+    border: 1px solid #2c2c2c;
+
+    border-radius: 8px;
+
+    background: #0d0d0d;
+
+    color: white;
+
+    outline: none;
+}
+
+
+#form-playlist input:focus {
+    border-color: var(--laranja);
+}
+
+
+#form-playlist button {
+    background: linear-gradient(
+        135deg,
+        var(--laranja-escuro),
+        var(--laranja)
+    );
+
+    color: #0b0b0b;
+}
+
+
+.lista-playlists {
+    display: flex;
+
+    flex-wrap: wrap;
+
+    gap: 10px;
+}
+
+
+.playlist-item {
+    display: flex;
+
+    gap: 4px;
+}
+
+
+.playlist-item button:first-child {
+    background: #202020;
+
+    color: #eee;
+
+    border: 1px solid #303030;
+}
+
+
+.playlist-item button:first-child:hover {
+    border-color: var(--laranja);
+
+    color: var(--laranja-claro);
+}
+
+
+.playlist-item button:last-child {
+    background: #181818;
+
+    color: #888;
+}
+
+
+.playlist-selecionada {
+    margin-top: 28px;
+
+    padding-top: 22px;
+
+    border-top: 1px solid #272727;
+}
+
+
+.playlist-selecionada h3 {
+    margin-top: 0;
+
+    color: var(--laranja-claro);
+
+    font-size: 20px;
+}
+
+
+/* ========================================
+   LISTA DE MÚSICAS
+======================================== */
 
 .lista-musicas {
     display: grid;
 
     grid-template-columns:
-        repeat(auto-fill, minmax(250px, 1fr));
+        repeat(
+            auto-fill,
+            minmax(220px, 1fr)
+        );
 
     gap: 20px;
 }
@@ -98,53 +408,198 @@ main {
 ======================================== */
 
 .card-musica {
-    background: #181818;
+    position: relative;
 
-    padding: 16px;
+    padding: 14px;
 
-    border-radius: 10px;
+    border: 1px solid #1f1f1f;
 
-    transition: transform 0.2s;
+    border-radius: 13px;
+
+    background:
+        linear-gradient(
+            145deg,
+            #171717,
+            #0d0d0d
+        );
+
+    box-shadow:
+        0 10px 30px rgba(0, 0, 0, 0.3);
+
+    transition:
+        transform 0.25s,
+        border-color 0.25s,
+        box-shadow 0.25s;
 }
+
 
 .card-musica:hover {
-    transform: translateY(-4px);
+    transform: translateY(-5px);
+
+    border-color: rgba(255, 122, 0, 0.35);
+
+    box-shadow:
+        0 14px 35px rgba(0, 0, 0, 0.5),
+        0 0 20px rgba(255, 122, 0, 0.06);
 }
 
+
+/* ========================================
+   CAPA
+======================================== */
 
 .capa-musica {
     width: 100%;
+
     aspect-ratio: 1;
 
     object-fit: cover;
 
-    border-radius: 8px;
+    border-radius: 9px;
 
-    margin-bottom: 12px;
+    display: block;
+
+    margin-bottom: 14px;
+
+    background: #0c0c0c;
 }
 
+
+/* ========================================
+   INFORMAÇÕES
+======================================== */
 
 .informacoes-musica h3 {
     margin: 0 0 8px;
+
+    font-size: 18px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
 }
+
 
 .informacoes-musica p {
     margin: 4px 0;
-    color: #b3b3b3;
+
+    color: var(--texto-secundario);
+
+    font-size: 14px;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
 }
 
 
-.card-musica button {
+/* ========================================
+   BOTÕES DO CARD
+======================================== */
+
+.card-musica > button {
     width: 100%;
 
-    margin-top: 15px;
+    margin-top: 10px;
+}
 
-    padding: 10px;
 
-    border: none;
-    border-radius: 20px;
+.card-musica > button:first-of-type {
+    background: linear-gradient(
+        135deg,
+        var(--laranja-escuro),
+        var(--laranja)
+    );
 
-    cursor: pointer;
+    color: #0a0a0a;
+}
+
+
+.card-musica > button:last-of-type {
+    background: #202020;
+
+    border: 1px solid #303030;
+
+    color: #ddd;
+}
+
+
+.card-musica > button:last-of-type:hover {
+    border-color: var(--laranja);
+
+    color: var(--laranja-claro);
+}
+
+
+/* ========================================
+   MÚSICAS DA PLAYLIST
+======================================== */
+
+.playlist-musica {
+    display: flex;
+
+    align-items: center;
+
+    gap: 15px;
+
+    padding: 12px 14px;
+
+    margin-bottom: 8px;
+
+    border: 1px solid #202020;
+
+    border-radius: 8px;
+
+    background: #111;
+}
+
+
+.playlist-musica div {
+    display: flex;
+
+    flex-direction: column;
+
+    flex: 1;
+
+    min-width: 0;
+}
+
+
+.playlist-musica strong {
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+}
+
+
+.playlist-musica span {
+    margin-top: 4px;
+
+    color: var(--texto-secundario);
+
+    font-size: 13px;
+}
+
+
+.playlist-musica button {
+    background: #202020;
+
+    color: #ddd;
+
+    border: 1px solid #333;
+}
+
+
+.playlist-musica button:hover {
+    border-color: var(--laranja);
+
+    color: var(--laranja-claro);
 }
 
 
@@ -159,119 +614,97 @@ main {
     right: 0;
     bottom: 0;
 
-    height: 90px;
+    z-index: 30;
 
-    background: #181818;
+    min-height: 90px;
+
+    padding: 14px 25px;
 
     display: flex;
+
     align-items: center;
 
-    gap: 30px;
+    gap: 24px;
 
-    padding: 15px 30px;
+    background:
+        rgba(10, 10, 10, 0.96);
 
-    border-top: 1px solid #333;
+    backdrop-filter: blur(16px);
+
+    border-top: 1px solid #252525;
+
+    box-shadow:
+        0 -10px 35px rgba(0, 0, 0, 0.4);
 }
+
 
 .musica-atual {
     min-width: 250px;
+
+    max-width: 320px;
+
+    overflow: hidden;
 }
+
+
+#musica-atual-titulo {
+    display: block;
+
+    white-space: nowrap;
+
+    overflow: hidden;
+
+    text-overflow: ellipsis;
+
+    color: #eee;
+}
+
 
 #audio-player {
     flex: 1;
-}
 
-.playlists-section {
-    margin-top: 40px;
-}
+    width: 100%;
 
-
-#form-playlist {
-    display: flex;
-    gap: 10px;
-    margin-bottom: 20px;
+    accent-color: var(--laranja);
 }
 
 
-#form-playlist input {
-    flex: 1;
+/* ========================================
+   RESPONSIVIDADE
+======================================== */
 
-    padding: 12px;
+@media (max-width: 700px) {
 
-    border: none;
-    border-radius: 6px;
-}
-
-
-#form-playlist button {
-    padding: 12px 18px;
-}
+    main {
+        padding: 25px 15px;
+    }
 
 
-.lista-playlists {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 10px;
-
-    margin-bottom: 30px;
-}
+    .cabecalho h1 {
+        font-size: 32px;
+    }
 
 
-.playlist-item {
-    display: flex;
-    gap: 5px;
-}
+    #form-playlist {
+        flex-direction: column;
+    }
 
 
-.playlist-item button:first-child {
-    padding: 10px 15px;
-}
+    .player {
+        flex-direction: column;
+
+        align-items: stretch;
+
+        gap: 8px;
+
+        padding: 12px 15px;
+    }
 
 
-.playlist-item button:last-child {
-    padding: 10px;
-}
+    .musica-atual {
+        min-width: 0;
 
+        max-width: none;
+    }
 
-.playlist-selecionada {
-    margin-top: 20px;
-}
-
-
-.playlist-musica {
-    display: flex;
-
-    align-items: center;
-    justify-content: space-between;
-
-    gap: 15px;
-
-    padding: 12px;
-
-    background: #181818;
-
-    border-radius: 6px;
-
-    margin-bottom: 8px;
-}
-
-
-.playlist-musica div {
-    display: flex;
-
-    flex-direction: column;
-
-    flex: 1;
-}
-
-
-.playlist-musica span {
-    color: #b3b3b3;
-
-    margin-top: 4px;
-}
-
-
-.playlist-musica button {
-    padding: 8px 12px;
 }
