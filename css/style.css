@@ -708,3 +708,31 @@ main {
     }
 
 }
+
+/*
+Conexão
+*/
+.status-conexao {
+    display: flex;
+
+    align-items: center;
+
+    gap: 12px;
+}
+
+
+#status-rede {
+    font-size: 13px;
+
+    color: #777;
+}
+
+
+#status-rede.online {
+    color: #ff9d2e;
+}
+
+
+#status-rede.offline {
+    color: #888;
+}

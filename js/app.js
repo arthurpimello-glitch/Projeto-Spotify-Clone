@@ -862,3 +862,58 @@ onAuthStateChanged(
 
     }
 );
+
+// ========================================
+// Status da conexão
+// ========================================
+
+const statusRede =
+    document.getElementById("status-rede");
+
+
+function atualizarStatusRede() {
+
+    if (navigator.onLine) {
+
+        statusRede.textContent =
+            "● Online";
+
+        statusRede.classList.remove(
+            "offline"
+        );
+
+        statusRede.classList.add(
+            "online"
+        );
+
+    } else {
+
+        statusRede.textContent =
+            "● Offline";
+
+        statusRede.classList.remove(
+            "online"
+        );
+
+        statusRede.classList.add(
+            "offline"
+        );
+
+    }
+
+}
+
+
+window.addEventListener(
+    "online",
+    atualizarStatusRede
+);
+
+
+window.addEventListener(
+    "offline",
+    atualizarStatusRede
+);
+
+
+atualizarStatusRede();

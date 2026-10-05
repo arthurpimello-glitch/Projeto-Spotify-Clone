@@ -1,5 +1,11 @@
 import { initializeApp } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-app.js";
-import { getFirestore } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
+import {
+    initializeFirestore,
+    persistentLocalCache,
+    persistentMultipleTabManager
+} from "https://www.gstatic.com/firebasejs/12.19.0/firebase-firestore.js";
+
 import { getAuth } from "https://www.gstatic.com/firebasejs/12.19.0/firebase-auth.js";
 
 const firebaseConfig = {
@@ -13,7 +19,22 @@ const firebaseConfig = {
 
 const app = initializeApp(firebaseConfig);
 
-const db = getFirestore(app);
+// ========================================
+// FIRESTORE COM PERSISTÊNCIA OFFLINE
+// ========================================
+
+const db = initializeFirestore(
+    app,
+    {
+        localCache: persistentLocalCache({
+            tabManager: persistentMultipleTabManager()
+        })
+    }
+);
+
+// ========================================
+// AUTHENTICATION
+// ========================================
 
 const auth = getAuth(app);
 
